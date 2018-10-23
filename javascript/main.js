@@ -39,11 +39,13 @@ canvas.addEventListener('mousedown', (e) => {
       if (seenLettercounter < canv2.word.length) {
         var nextGap = findTheGap()
         console.log(nextGap)
-        if (nextGap < letterArray.length) {
+        if (nextGap <= letterArray.length) {
+          console.log("executing if")
           letterArray.splice(nextGap, 1, (new Letter(ctx2, lett, 340, 20, nextGap)))
         }
         else {
-          letterArray.push(new Letter(ctx2, lett, 340, 20, nextGap))
+          console.log("executing else")
+          letterArray.push(new Letter(ctx2, lett, 340, 20))
         }
         seenLettercounter++
         bubble.pop()
@@ -63,18 +65,25 @@ canvas.addEventListener('mousedown', (e) => {
 
 function findTheGap() {
   var minGap = 0
-  var Gap = []
+  // var Gap = []
   if (letterArray.length > 0) {
-    letterArray.forEach((letter, i) => {
-      if (letter === "" || letter.index !== i) {
-        console.log("not the same value", letter.index, i, minGap)
-        return minGap
-        // Gap.push(minGap)
-      } else {
-        // console.log("it is the same value", letter.index, i)
-        minGap = i + 1
+    for (var i = 0; i < letterArray.length; i++) {
+      if (letterArray[i] == "" || letterArray[i].index !== i) {
+        break;
       }
-    })
+      minGap = i + 1
+    }
+    // letterArray.forEach((letter, i) => {
+    //   if (letter === "" || letter.index !== i) {
+    //     // console.log("not the same value", letter.index, i, minGap)
+    //     return minGap
+    //     // Gap.push(minGap)
+    //     //break;
+    //   }
+    //   // console.log("it is the same value", letter.index, i)
+    //   minGap = i + 1
+
+    // })
   }
   return minGap
   // if (Gap == []) { return letterArray.length } else { return Gap[0] }
@@ -110,9 +119,9 @@ canvas2.addEventListener("mousedown", (e) => {
 
 
 var easyButton = document.getElementById("easy")
-easyButton.onclick = easybtn()
-function easybtn() {
-  console.log("EasyButton clicked")
+easyButton.onclick = function () {
+  // var reloadImage = easyButton.onclick()
+  // console.log("EasyButton clicked")
 
   $(".container").hide()
   $("#canvas2").show()

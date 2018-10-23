@@ -55,7 +55,7 @@ class LetterCanvas {
     }
     else {
       alert("Loading new word")
-      // easybtn()
+      // reloadImage()
     }
   }
 }
