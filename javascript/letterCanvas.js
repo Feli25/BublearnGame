@@ -8,6 +8,8 @@ class LetterCanvas {
     this.img = new Image();
     this.img.src = arr[ran].image;
     this.arr = arr
+    // this.width = this.ctx2.canvas2.width
+    // this.height = this.ctx2.canvas2.height
     // this.letterCounter = 0;
     // this.letterXdist = 25
   }
@@ -42,11 +44,18 @@ class LetterCanvas {
   typedCorrectWord() {
     scoreCounter++
     this.arr.splice(this.ran, 1)
-    if (scoreCounter == 10) {
+    if (scoreCounter == 2) {
+      scoreCounter = 0;
       alert("You won")
+      $("#canvas2").hide()
+      $("#canvas").hide()
+      $("#submitBut").hide()
+      $("#textAbout").hide()
+      $(".container").show()
     }
     else {
       alert("Loading new word")
+      // easybtn()
     }
   }
 }

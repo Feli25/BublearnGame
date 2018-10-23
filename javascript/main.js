@@ -1,3 +1,6 @@
+//ToDo: Medium and Hard is not working, Letters are going back in the wrong place, load new image when correct
+
+
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 var width = canvas.width
@@ -107,7 +110,8 @@ canvas2.addEventListener("mousedown", (e) => {
 
 
 var easyButton = document.getElementById("easy")
-easyButton.onclick = function () {
+easyButton.onclick = easybtn()
+function easybtn() {
   console.log("EasyButton clicked")
 
   $(".container").hide()
@@ -226,7 +230,10 @@ function checkIfWordCorrect() {
   var joinedLetters = allLetters.join("")
 
   if (joinedLetters == canv2.word) {
+    canv2.ctx2.clearRect(0, 0, 470, 400)
     canv2.typedCorrectWord()
+
+    // if (canv2.typedCorrectWord()) { console.log()}
   }
   else { canv2.typedWrongWord() }
 
