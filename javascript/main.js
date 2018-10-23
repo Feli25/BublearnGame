@@ -11,14 +11,7 @@ var bubbles = []
 
 var bg = new Background(ctx, "./images/blue.png")
 
-
-// bubbles onclick function
-var offsetX = canvas.offsetLeft;
-var offsetY = canvas.offsetTop;
-var cx = canvas.width / 2;
-var cy = canvas.height / 2;
-var r = 20;//buble radius
-
+var letterArray = []
 
 var canv2
 $("#canvas2").hide()
@@ -26,7 +19,7 @@ $("#canvas").hide()
 $("#submitBut").hide()
 $("#textAbout").hide()
 
-canvas.addEventListener('click', (e) => {
+canvas.addEventListener('mousedown', (e) => {
   console.log("canvas was clicked")
 
 
@@ -42,24 +35,51 @@ canvas.addEventListener('click', (e) => {
     var dy = bubble.y - mousePoint.y;
     var distance = Math.sqrt(dx * dx + dy * dy)
     // console.log(bubble.letter, dx, dy, bubble.y, mousePoint.y)
-    console.log(distance, bubble.radius)
+    // console.log(distance, bubble.radius)
     if (dx * dx + dy * dy <= bubble.radius * bubble.radius) {
       // alert("you are inside the circle");
-      bubble.pop()
+      var lett = bubble.onClick()
+      if (letterArray.length < canv2.word.length) {
+        canv2.drawLetter(lett)
+        bubble.pop()
+      }
+      letterArray.push({ letter: lett, x: canv2.letterXdist + ((canv2.letterCounter - 1) * 50), y: 340, size: 20 })
+
+      // console.log(letterArray)
+      // console.log(bubbles)
     }
-    // if (isIntersect(mousePoint, bubble)) {
-    //   console.log("bubble was clicked")
-    //   bubble.onClick()
-    // }
   });
 });
+
+canvas2.addEventListener("mousedown", (e) => {
+  // console.log("canvas2 was clicked")
+  const mousePoint2 = {
+    x: e.clientX - canvas2.offsetLeft,
+    y: e.clientY - canvas2.offsetTop
+  };
+  console.log(mousePoint2.x, mousePoint2.y)
+  letterArray.forEach(letter => {
+    var letterxmid = letter.x + letter.size;
+    var letterymid = letter.y - 8;
+    console.log(letterxmid, letterymid)
+    var dx2 = letterxmid - mousePoint2.x;
+    var dy2 = letterymid - mousePoint2.y;
+    if (dx2 * dx2 + dy2 * dy2 <= (letter.size + 4) * (letter.size + 4)) {
+      console.log("Letter found")
+      console.log(letter.letter)
+      bubbles.push(new Bubble(ctx, 2, 3, letter.letter))
+    }
+  })
+
+
+})
 
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
   console.log("EasyButton clicked")
 
-  $(".buttons").hide()
+  $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
   $("#submitBut").show()
@@ -69,9 +89,7 @@ easyButton.onclick = function () {
     canv2.draw()
   }
 
-
-  bubbles = []
-  for (var i = 0; i < 0; i++) {
+  for (var i = 0; i < 25; i++) {
     bubbles.push(new Bubble(ctx, 2, 3))
   }
   var splitword = canv2.word.split("")
@@ -96,7 +114,7 @@ var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
   console.log("MediumButton clicked")
 
-  $(".buttons").hide()
+  $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
   $("#submitBut").show()
@@ -106,8 +124,7 @@ mediumButton.onclick = function () {
     canv2.draw()
   }
 
-  bubbles = []
-  for (var i = 0; i < 35; i++) {
+  for (var i = 0; i < 25; i++) {
     bubbles.push(new Bubble(ctx, 4, 3))
   }
   var splitword = canv2.word.split("")
@@ -132,7 +149,7 @@ var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
   console.log("HardButton clicked")
 
-  $(".buttons").hide()
+  $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
   $("#submitBut").show()
@@ -143,7 +160,6 @@ hardButton.onclick = function () {
   }
 
 
-  bubbles = []
   for (var i = 0; i < 35; i++) {
     bubbles.push(new Bubble(ctx, 6, 5))
   }

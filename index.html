@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="styles/style.css">
   <title>BubbleLetters</title>
 </head>
+
 <body>
 
   <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img src="images/abc.png" width="30" height="30" class="d-inline-block align-top" alt="ABC" id="headImg">
-        Bubble Letters
-      </a>
-      <div>
-        <a href="#" id="reload" class="homeBut">Home</a>
-        <a href="#" id="about" class="homeBut">About</a>
-      </div>
+    <a class="navbar-brand" href="#">
+      <img src="images/abc.png" width="30" height="30" class="d-inline-block align-top" alt="ABC" id="headImg">
+      Bubble Letters
+    </a>
+    <div>
+      <a href="#" id="reload" class="homeBut">Home</a>
+      <a href="#" id="about" class="homeBut">About</a>
+    </div>
   </nav>
 
   <div class="container">
@@ -33,25 +36,24 @@
 
   <div class="canv">
     <div class="boxRight">
-      <canvas id="canvas2" width="500" height="400"></canvas>
+      <canvas id="canvas2" width="470" height="400"></canvas>
       <div id="submitBut">
         <button type="button" class="btn btn-success" id="solution">OK</button>
       </div>
     </div>
-    <canvas id="canvas" width="700" height="600"></canvas>
+    <canvas id="canvas" width="600" height="600"></canvas>
   </div>
 
   <div id="textAbout">ABOUT</div>
 
 
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
   <script src="javascript/background.js"></script>
   <script src="javascript/bubbles.js"></script>
   <script src="javascript/words.js"></script>
   <script src="javascript/letterCanvas.js"></script>
   <script src="javascript/main.js"></script>
 </body>
+
 </html>
