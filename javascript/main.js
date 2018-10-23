@@ -12,6 +12,8 @@ var bubbles = []
 var bg = new Background(ctx, "./images/blue.png")
 
 var letterArray = []
+var seenLettercounter = 0
+// var letterWord = []
 
 var canv2
 $("#canvas2").hide()
@@ -19,59 +21,88 @@ $("#canvas").hide()
 $("#submitBut").hide()
 $("#textAbout").hide()
 
+// Clicking on the bubbles, right side
 canvas.addEventListener('mousedown', (e) => {
-  console.log("canvas was clicked")
-
-
   const mousePoint = {
     x: e.clientX - canvas.offsetLeft,
     y: e.clientY - canvas.offsetTop
   };
-
-  // console.log(e.clientX, offsetX, e.clientY, offsetY, canvas.offsetTop)
-
   bubbles.forEach(bubble => {
     var dx = bubble.x - mousePoint.x;
     var dy = bubble.y - mousePoint.y;
-    var distance = Math.sqrt(dx * dx + dy * dy)
-    // console.log(bubble.letter, dx, dy, bubble.y, mousePoint.y)
-    // console.log(distance, bubble.radius)
     if (dx * dx + dy * dy <= bubble.radius * bubble.radius) {
-      // alert("you are inside the circle");
       var lett = bubble.onClick()
-      if (letterArray.length < canv2.word.length) {
-        canv2.drawLetter(lett)
+      console.log(seenLettercounter)
+      if (seenLettercounter < canv2.word.length) {
+        var nextGap = findTheGap()
+        console.log(nextGap)
+        if (nextGap < letterArray.length) {
+          letterArray.splice(nextGap, 1, (new Letter(ctx2, lett, 340, 20, nextGap)))
+        }
+        else {
+          letterArray.push(new Letter(ctx2, lett, 340, 20, nextGap))
+        }
+        seenLettercounter++
         bubble.pop()
+        letterArray.forEach(function (letter) {
+          if (letter !== "") {
+            letter.draw()
+          }
+        })
       }
-      letterArray.push({ letter: lett, x: canv2.letterXdist + ((canv2.letterCounter - 1) * 50), y: 340, size: 20 })
-
-      // console.log(letterArray)
+      // letterWord.push(lett)
+      //console.log(letterArray)
       // console.log(bubbles)
     }
   });
 });
 
+
+function findTheGap() {
+  var minGap = 0
+  var Gap = []
+  if (letterArray.length > 0) {
+    letterArray.forEach((letter, i) => {
+      if (letter === "" || letter.index !== i) {
+        console.log("not the same value", letter.index, i, minGap)
+        return minGap
+        // Gap.push(minGap)
+      } else {
+        // console.log("it is the same value", letter.index, i)
+        minGap = i + 1
+      }
+    })
+  }
+  return minGap
+  // if (Gap == []) { return letterArray.length } else { return Gap[0] }
+}
+
+
+// Clicking on the letters, left side
 canvas2.addEventListener("mousedown", (e) => {
-  // console.log("canvas2 was clicked")
   const mousePoint2 = {
     x: e.clientX - canvas2.offsetLeft,
     y: e.clientY - canvas2.offsetTop
   };
-  console.log(mousePoint2.x, mousePoint2.y)
-  letterArray.forEach(letter => {
-    var letterxmid = letter.x + letter.size;
+  letterArray.forEach((letter, index) => {
+    var letterxmid = letter.x + letter.halfSize;
     var letterymid = letter.y - 8;
-    console.log(letterxmid, letterymid)
     var dx2 = letterxmid - mousePoint2.x;
     var dy2 = letterymid - mousePoint2.y;
-    if (dx2 * dx2 + dy2 * dy2 <= (letter.size + 4) * (letter.size + 4)) {
-      console.log("Letter found")
-      console.log(letter.letter)
+    if (dx2 * dx2 + dy2 * dy2 <= (letter.halfSize + 4) * (letter.halfSize + 4)) {
+      ctx2.clearRect(letter.x, letter.y - letter.halfSize * 2, letter.halfSize * 2, letter.halfSize * 2)
+      seenLettercounter--
+      //Remove letter from array
       bubbles.push(new Bubble(ctx, 2, 3, letter.letter))
+
+      console.log("BEFORE!", letterArray)
+      // var topush = { index: index, }
+      letterArray.splice(index, 1, "")
+      console.log("AFTER", letterArray)
+      return
     }
+
   })
-
-
 })
 
 
@@ -183,7 +214,22 @@ hardButton.onclick = function () {
 
 var okBut = document.getElementById("solution")
 okBut.onclick = function () {
+  checkIfWordCorrect()
   console.log("Still have to do this")
+}
+
+function checkIfWordCorrect() {
+  var allLetters = []
+  letterArray.forEach(function (elem) {
+    allLetters.push(elem.letter)
+  })
+  var joinedLetters = allLetters.join("")
+
+  if (joinedLetters == canv2.word) {
+    canv2.typedCorrectWord()
+  }
+  else { canv2.typedWrongWord() }
+
 }
 
 var homeBut = document.getElementById("reload")
@@ -199,8 +245,6 @@ aboutBut.onclick = function () {
   $("#submitBut").hide()
   $("#textAbout").show()
 }
-
-
 
 
 function isIntersect(point, circle) {

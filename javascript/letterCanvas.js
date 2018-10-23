@@ -1,4 +1,4 @@
-var counter = 0
+var scoreCounter = 0
 
 class LetterCanvas {
   constructor(ctx2, arr) {
@@ -7,8 +7,9 @@ class LetterCanvas {
     this.word = arr[ran].name
     this.img = new Image();
     this.img.src = arr[ran].image;
-    this.letterCounter = 0;
-    this.letterXdist = 25
+    this.arr = arr
+    // this.letterCounter = 0;
+    // this.letterXdist = 25
   }
   draw() {
     var x = 20;
@@ -22,23 +23,26 @@ class LetterCanvas {
     }
     console.log(this.word)
     console.log(this.img)
-    this.ctx2.drawImage(this.img, 100, 100, 100, 100)
+    this.ctx2.drawImage(this.img, 100, 70, 150 * this.img.width / this.img.height, 150)
   }
-  drawLetter(letter) {
-    var letterX = this.letterXdist + (this.letterCounter * 50)
-    var letterY = 340
-    this.ctx2.font = "40px 'Trebuchet MS'"
-    this.ctx2.fillText(letter, letterX, letterY)
-    this.letterCounter++;
-  }
+
+  // drawLetter(letter) {
+  //   var letterX = 25 + (this.letterCounter * 50)
+  //   var letterY = 340
+  //   this.ctx2.font = "40px 'Trebuchet MS'"
+  //   this.ctx2.fillText(letter, letterX, letterY)
+  //   this.letterCounter++;
+  // }
   shake() { }
+
   typedWrongWord() {
     alert("This is wrong, try again")
   }
-  TypedCorrectWord() {
-    counter++
-    arr.splice(ran, 1)
-    if (counter == 10) {
+
+  typedCorrectWord() {
+    scoreCounter++
+    this.arr.splice(this.ran, 1)
+    if (scoreCounter == 10) {
       alert("You won")
     }
     else {
