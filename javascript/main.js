@@ -73,20 +73,8 @@ function findTheGap() {
       }
       minGap = i + 1
     }
-    // letterArray.forEach((letter, i) => {
-    //   if (letter === "" || letter.index !== i) {
-    //     // console.log("not the same value", letter.index, i, minGap)
-    //     return minGap
-    //     // Gap.push(minGap)
-    //     //break;
-    //   }
-    //   // console.log("it is the same value", letter.index, i)
-    //   minGap = i + 1
-
-    // })
   }
   return minGap
-  // if (Gap == []) { return letterArray.length } else { return Gap[0] }
 }
 
 
