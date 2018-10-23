@@ -1,4 +1,4 @@
-//ToDo: Medium and Hard is not working, Letters are going back in the wrong place, load new image when correct
+//ToDo: Medium and Hard is not working, load new image when correct
 
 
 var canvas = document.getElementById('canvas')
@@ -16,7 +16,6 @@ var bg = new Background(ctx, "./images/blue.png")
 
 var letterArray = []
 var seenLettercounter = 0
-// var letterWord = []
 
 var canv2
 $("#canvas2").hide()
@@ -35,16 +34,12 @@ canvas.addEventListener('mousedown', (e) => {
     var dy = bubble.y - mousePoint.y;
     if (dx * dx + dy * dy <= bubble.radius * bubble.radius) {
       var lett = bubble.onClick()
-      console.log(seenLettercounter)
       if (seenLettercounter < canv2.word.length) {
         var nextGap = findTheGap()
-        console.log(nextGap)
         if (nextGap <= letterArray.length) {
-          console.log("executing if")
           letterArray.splice(nextGap, 1, (new Letter(ctx2, lett, 340, 20, nextGap)))
         }
         else {
-          console.log("executing else")
           letterArray.push(new Letter(ctx2, lett, 340, 20))
         }
         seenLettercounter++
@@ -55,9 +50,6 @@ canvas.addEventListener('mousedown', (e) => {
           }
         })
       }
-      // letterWord.push(lett)
-      //console.log(letterArray)
-      // console.log(bubbles)
     }
   });
 });
@@ -65,7 +57,6 @@ canvas.addEventListener('mousedown', (e) => {
 
 function findTheGap() {
   var minGap = 0
-  // var Gap = []
   if (letterArray.length > 0) {
     for (var i = 0; i < letterArray.length; i++) {
       if (letterArray[i] == "" || letterArray[i].index !== i) {
@@ -96,7 +87,6 @@ canvas2.addEventListener("mousedown", (e) => {
       bubbles.push(new Bubble(ctx, 2, 3, letter.letter))
 
       console.log("BEFORE!", letterArray)
-      // var topush = { index: index, }
       letterArray.splice(index, 1, "")
       console.log("AFTER", letterArray)
       return
