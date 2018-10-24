@@ -46,8 +46,8 @@ canvas.addEventListener('mousedown', (e) => {
           letterArray.push(new Letter(ctx2, lett, 340, 20))
         }
         seenLettercounter++
-        bubble.pop()
         myBubbleSound.play();
+        bubble.pop()
         letterArray.forEach(function (letter) {
           if (letter !== "") {
             letter.draw()

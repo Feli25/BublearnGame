@@ -79,10 +79,22 @@ h1 {
   background-position: right 0px top 100px;
   line-height: 25px;
 }
+.wrapperAbout{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+}
 #textAbout {
-  border: 1px solid black;
+  border: 1px solid blue;
+  background-image: url(../images/start.jpg);
+  background-repeat: no-repeat;
+  height: 450px;
+  width: 600px;
+  padding: 10px 0px 0px 0px;
+  background-position: right 0px top 100px;
+  margin: 50px 100px 0px 100px;
+  line-height: 25px;
   text-align: center;
-  height:500px;
   font-family: fantasy;
 }
 #won {
