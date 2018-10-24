@@ -1,18 +1,19 @@
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 class Bubble {
-  constructor(ctx, xspeed, yspeed, letter) {
+  constructor(ctx, speed, letter) {
     this.radius = 30;
     this.ctx = ctx;
     var ran1 = Math.random()
     var ran2 = Math.random()
     var ranletter = Math.floor(ran1 * alphabet.length)
     var ranx = Math.floor(ran1 * (this.ctx.canvas.width - this.radius * 3) + this.radius * 2)
-    var ranxspeed = ran2 * xspeed
-    var ranyspeed = ran2 * yspeed
+    var rany = Math.floor(ran2 * (this.ctx.canvas.height - this.radius * 3) + this.radius * 2)
+    var ranxspeed = ran2 * 1
+    var ranyspeed = (ran2 * speed) + 0.1
     this.letter = letter || alphabet[ranletter]
     this.x = ranx
-    this.y = this.radius * 2
+    this.y = rany
     this.vx = ranxspeed
     this.vy = ranyspeed
     this.scolor = "blue"

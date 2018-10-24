@@ -28,14 +28,7 @@ class LetterCanvas {
     this.ctx2.drawImage(this.img, 100, 70, 150 * this.img.width / this.img.height, 150)
   }
 
-  // drawLetter(letter) {
-  //   var letterX = 25 + (this.letterCounter * 50)
-  //   var letterY = 340
-  //   this.ctx2.font = "40px 'Trebuchet MS'"
-  //   this.ctx2.fillText(letter, letterX, letterY)
-  //   this.letterCounter++;
-  // }
-  shake() { }
+  // shake() { }
 
   typedWrongWord() {
     alert("This is wrong, try again")
@@ -47,15 +40,11 @@ class LetterCanvas {
     if (scoreCounter == 2) {
       scoreCounter = 0;
       alert("You won")
-      $("#canvas2").hide()
-      $("#canvas").hide()
-      $("#submitBut").hide()
-      $("#textAbout").hide()
-      $(".container").show()
+      return false
     }
     else {
       alert("Loading new word")
-      // reloadImage()
+      return true
     }
   }
 }

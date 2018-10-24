@@ -1,4 +1,4 @@
-//ToDo: load new image when correct
+//ToDo: not repeat words
 
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
@@ -10,11 +10,12 @@ var ctx2 = canvas2.getContext('2d')
 var width2 = canvas2.width
 var height2 = canvas2.height
 var bubbles = []
-
+var bg
 var letterArray = []
 var seenLettercounter = 0
-
 var canv2
+var gameInterval
+
 $("#canvas2").hide()
 $("#canvas").hide()
 $("#submitBut").hide()
@@ -81,7 +82,7 @@ canvas2.addEventListener("mousedown", (e) => {
       ctx2.clearRect(letter.x, letter.y - letter.halfSize * 2, letter.halfSize * 2, letter.halfSize * 2)
       seenLettercounter--
       //Remove letter from array
-      bubbles.push(new Bubble(ctx, 2, 3, letter.letter))
+      bubbles.push(new Bubble(ctx, 1, letter.letter))
 
       console.log("BEFORE!", letterArray)
       letterArray.splice(index, 1, "")
@@ -92,119 +93,75 @@ canvas2.addEventListener("mousedown", (e) => {
   })
 })
 
+var reloadImage
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
-  //var reloadImage = easyButton.onclick()
+  // reloadImage = easyButton.onclick
   // console.log("EasyButton clicked")
-  var bg = new Background(ctx, "./images/blue.png")
-  $(".container").hide()
-  $("#canvas2").show()
-  $("#canvas").show()
-  $("#submitBut").show()
-
-  canv2 = new LetterCanvas(ctx2, possibleWords1)
-  canv2.img.onload = function () {
-    canv2.draw()
-  }
-
-  for (var i = 0; i < 25; i++) {
-    bubbles.push(new Bubble(ctx, 2, 3))
-  }
-  var splitword = canv2.word.split("")
-  for (var i = 0; i < splitword.length; i++) {
-    bubbles.push(new Bubble(ctx, 2, 3, splitword[i]))
-  }
-  setInterval(function () {
+  createCanvas2("./images/blue.png", 1, possibleWords1);
+  showCanvas();
+  gameInterval = setInterval(function () {
     update()
     drawEverything()
   }, 1000 / 60)
-  function update() {
-    bubbles.forEach(function (elem) { elem.update() })
-  }
-  function drawEverything() {
-    ctx.clearRect(0, 0, width, height)
-    bg.draw()
-    bubbles.forEach(function (elem) { elem.draw() })
-  }
 }
 
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
-  console.log("MediumButton clicked")
-  var bg = new Background(ctx, "./images/sky.png")
-
-  $(".container").hide()
-  $("#canvas2").show()
-  $("#canvas").show()
-  $("#submitBut").show()
-
-  canv2 = new LetterCanvas(ctx2, possibleWords2)
-  canv2.img.onload = function () {
-    canv2.draw()
-  }
-
-  for (var i = 0; i < 25; i++) {
-    bubbles.push(new Bubble(ctx, 4, 3))
-  }
-  var splitword = canv2.word.split("")
-  for (var i = 0; i < splitword.length; i++) {
-    bubbles.push(new Bubble(ctx, 2, 3, splitword[i]))
-  }
-  setInterval(function () {
+  // reloadImage = mediumButton.onclick
+  createCanvas2("./images/sky.png", 2, possibleWords2);
+  showCanvas();
+  gameInterval = setInterval(function () {
     update()
     drawEverything()
   }, 1000 / 60)
-  function update() {
-    bubbles.forEach(function (elem) { elem.update() })
-  }
-  function drawEverything() {
-    ctx.clearRect(0, 0, width, height)
-    bg.draw()
-    bubbles.forEach(function (elem) { elem.draw() })
-  }
 }
 
 var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
-  console.log("HardButton clicked")
-  var bg = new Background(ctx, "./images/space.png")
-  $(".container").hide()
-  $("#canvas2").show()
-  $("#canvas").show()
-  $("#submitBut").show()
-
-  canv2 = new LetterCanvas(ctx2, possibleWords3)
-  canv2.img.onload = function () {
-    canv2.draw()
-  }
-
-
-  for (var i = 0; i < 35; i++) {
-    bubbles.push(new Bubble(ctx, 6, 5))
-  }
-  var splitword = canv2.word.split("")
-  for (var i = 0; i < splitword.length; i++) {
-    bubbles.push(new Bubble(ctx, 2, 3, splitword[i]))
-  }
-  setInterval(function () {
+  createCanvas2("./images/space.png", 3, possibleWords3);
+  showCanvas();
+  gameInterval = setInterval(function () {
     update()
     drawEverything()
   }, 1000 / 60)
-  function update() {
-    bubbles.forEach(function (elem) { elem.update() })
-  }
-  function drawEverything() {
-    ctx.clearRect(0, 0, width, height)
-    bg.draw()
-    bubbles.forEach(function (elem) { elem.draw() })
-  }
+}
+
+function showCanvas() {
+  $(".container").hide();
+  $("#canvas2").show();
+  $("#canvas").show();
+  $("#submitBut").show();
+}
+
+function update() {
+  bubbles.forEach(function (elem) { elem.update() })
+}
+function drawEverything() {
+  ctx.clearRect(0, 0, width, height)
+  bg.draw()
+  bubbles.forEach(function (elem) { elem.draw() })
 }
 
 var okBut = document.getElementById("solution")
 okBut.onclick = function () {
   checkIfWordCorrect()
-  console.log("Still have to do this")
+}
+
+function createCanvas2(backgroundUrl, speed, array) {
+  bg = new Background(ctx, backgroundUrl)
+  canv2 = new LetterCanvas(ctx2, array);
+  canv2.img.onload = function () {
+    canv2.draw();
+  };
+  for (var i = 0; i < 25; i++) {
+    bubbles.push(new Bubble(ctx, speed));
+  }
+  var splitword = canv2.word.split("");
+  for (var i = 0; i < splitword.length; i++) {
+    bubbles.push(new Bubble(ctx, speed, splitword[i]));
+  }
 }
 
 function checkIfWordCorrect() {
@@ -215,13 +172,34 @@ function checkIfWordCorrect() {
   var joinedLetters = allLetters.join("")
 
   if (joinedLetters == canv2.word) {
+    // Reset all parameters to empty/0
+    bubbles = []
+    letterArray = []
+    ctx.clearRect(0, 0, width, height)
     canv2.ctx2.clearRect(0, 0, 470, 400)
-    canv2.typedCorrectWord()
+    if (canv2.typedCorrectWord()) {
+      if (seenLettercounter < 5) {
+        createCanvas2("./images/blue.png", 1, possibleWords1);
+      }
+      else if (4 < seenLettercounter < 7) {
+        createCanvas2("./images/sky.png", 2, possibleWords2)
+      }
+      else if (seenLettercounter > 6) {
+        createCanvas2("./images/space.png", 3, possibleWords3);
+      }
 
-    // if (canv2.typedCorrectWord()) { console.log()}
+      showCanvas();
+    }
+    else {
+      $("#canvas2").hide()
+      $("#canvas").hide()
+      $("#submitBut").hide()
+      $("#textAbout").hide()
+      $(".container").show()
+    }
+    seenLettercounter = 0
   }
   else { canv2.typedWrongWord() }
-
 }
 
 var homeBut = document.getElementById("reload")
@@ -232,6 +210,7 @@ homeBut.onclick = function () {
 var aboutBut = document.getElementById("about")
 aboutBut.onclick = function () {
   $(".buttons").hide()
+  $(".instructions").hide()
   $("#canvas2").hide()
   $("#canvas").hide()
   $("#submitBut").hide()
