@@ -201,8 +201,23 @@ function checkIfWordCorrect() {
   else { canv2.typedWrongWord() }
 }
 
+var deletebtn = document.getElementById("undo")
+deletebtn.onclick = function () {
+  letterArray.forEach(function (elem) {
+    bubbles.push(new Bubble(ctx, 1, elem.letter))
+  })
+  letterArray = []
+  seenLettercounter = 0
+  ctx2.clearRect(25, 310, 470, 37)
+}
+
 var homeBut = document.getElementById("reload")
 homeBut.onclick = function () {
+  window.location.reload(true)
+}
+
+var logobtn = document.getElementById("logo")
+logobtn.onclick = function () {
   window.location.reload(true)
 }
 

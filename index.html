@@ -14,7 +14,7 @@
 <body>
 
   <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" id="logo">
       <img src="images/abc.png" width="30" height="30" class="d-inline-block align-top" alt="ABC" id="headImg">
       Bubble Letters
     </a>
@@ -28,12 +28,21 @@
     <h1>Bubble Letters</h1>
 
     <div class="buttons">
-      <button id="easy">EASY</button>
-      <button id="medium">MEDIUM</button>
-      <button id="hard">HARD</button>
+      <button id="easy"><img src="images/starGreen.png" alt="EASY" class="star"></button>
+      <button id="medium"><img src="images/starYellow.png" alt="MEDIUM" class="star"><img src="images/starYellow.png"
+          alt="" class="star"></button>
+      <button id="hard"><img src="images/starRed.png" alt="" class="star"><img src="images/starRed.png" alt="HARD"
+          class="star"><img src="images/starRed.png" alt="" class="star"></button>
     </div>
     <div class="instructions">
       <h1>Instructions</h1>
+      <ul>
+        <li>Choose one of the levels, easy, medium or hard</li>
+        <li>Write down what you see on the left side, <br>by clicking on the letters on the right side.</li>
+        <li>To undo, click on the added later and it will disappear.</li>
+        <li>To remove all of the letters at once, click on the X.</li>
+        <li>When you are done, click on OK!</li>
+      </ul>
     </div>
   </div>
 
@@ -41,6 +50,7 @@
     <div class="boxRight">
       <canvas id="canvas2" width="470" height="400"></canvas>
       <div id="submitBut">
+        <button class="btn btn-danger" id="undo">X</button>
         <button type="button" class="btn btn-success" id="solution">OK</button>
       </div>
     </div>
