@@ -79,7 +79,7 @@ canvas2.addEventListener("mousedown", (e) => {
     var dx2 = letterxmid - mousePoint2.x;
     var dy2 = letterymid - mousePoint2.y;
     if (dx2 * dx2 + dy2 * dy2 <= (letter.halfSize + 4) * (letter.halfSize + 4)) {
-      ctx2.clearRect(letter.x, letter.y - letter.halfSize * 2, letter.halfSize * 2, letter.halfSize * 2)
+      ctx2.clearRect(letter.x, (letter.y - letter.halfSize * 2) + 6, letter.halfSize * 2, letter.halfSize * 2)
       seenLettercounter--
       //Remove letter from array
       bubbles.push(new Bubble(ctx, 1, letter.letter))
@@ -172,11 +172,12 @@ function checkIfWordCorrect() {
     canv2.ctx2.clearRect(0, 0, 470, 400)
 
     if (canv2.typedCorrectWord()) {
+      console.log(seenLettercounter)
       if (seenLettercounter < 5) {
         possibleWords1.splice(canv2.ran, 0)
         createCanvas2("./images/blue.png", 1, possibleWords1);
       }
-      else if (4 < seenLettercounter < 7) {
+      else if (seenLettercounter < 7 && seenLettercounter > 4) {
         createCanvas2("./images/sky.png", 1.5, possibleWords2)
       }
       else if (seenLettercounter > 6) {

@@ -35,7 +35,7 @@ class LetterCanvas {
   typedCorrectWord() {
     scoreCounter++
     this.arr.splice(this.ran, 1)
-    if (scoreCounter == 2) {
+    if (scoreCounter == 5) {
       scoreCounter = 0;
       alert("You won")
       return false
