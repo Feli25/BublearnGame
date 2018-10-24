@@ -230,3 +230,6 @@ aboutBut.onclick = function () {
   $("#submitBut").hide()
   $("#textAbout").show()
 }
+
+
+

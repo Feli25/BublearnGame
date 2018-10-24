@@ -26,10 +26,15 @@ class LetterCanvas {
     this.ctx2.drawImage(this.img, 100, 70, 150 * this.img.width / this.img.height, 150)
   }
 
-  // shake() { }
+  shake() {
+    $("#submitBut").addClass("start-shake")
+    setTimeout(function () { $("#submitBut").removeClass("start-shake") }, 1000)
+
+  }
 
   typedWrongWord() {
-    alert("This is wrong, try again")
+    this.shake()
+
   }
 
   typedCorrectWord() {
