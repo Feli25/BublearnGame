@@ -15,11 +15,15 @@ var letterArray = []
 var seenLettercounter = 0
 var canv2
 var gameInterval
+var myBubbleSound;
+var myGameSound = new sound("game.mp3");
+myGameSound.play()
 
 $("#canvas2").hide()
 $("#canvas").hide()
 $("#submitBut").hide()
 $("#textAbout").hide()
+$("#won").hide()
 
 // Clicking on the bubbles, right side
 canvas.addEventListener('mousedown', (e) => {
@@ -42,6 +46,7 @@ canvas.addEventListener('mousedown', (e) => {
         }
         seenLettercounter++
         bubble.pop()
+        myBubbleSound.play();
         letterArray.forEach(function (letter) {
           if (letter !== "") {
             letter.draw()
@@ -94,6 +99,7 @@ var reloadImage
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
+  myBubbleSound = new sound("./bubble.mp3")
   createCanvas2("./images/blue.png", 1, possibleWords1);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -104,6 +110,7 @@ easyButton.onclick = function () {
 
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
+  myBubbleSound = new sound("./bubble.mp3")
   createCanvas2("./images/sky.png", 1.5, possibleWords2);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -114,6 +121,7 @@ mediumButton.onclick = function () {
 
 var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
+  myBubbleSound = new sound("./bubble.mp3")
   createCanvas2("./images/space.png", 2, possibleWords3);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -187,13 +195,17 @@ function checkIfWordCorrect() {
       showCanvas();
     }
     else {
-
       possibleWords1.splice(canv2.ran, 0)
       $("#canvas2").hide()
       $("#canvas").hide()
       $("#submitBut").hide()
       $("#textAbout").hide()
-      $(".container").show()
+      $("#won").fadeIn(4000)
+      setTimeout(function () {
+        $(".container").fadeIn("slow")
+        $("#won").hide()
+      }, 5000)
+
     }
 
     seenLettercounter = 0

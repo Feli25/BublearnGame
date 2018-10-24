@@ -85,7 +85,11 @@ h1 {
   height:500px;
   font-family: fantasy;
 }
-
+#won {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
 .start-shake {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
