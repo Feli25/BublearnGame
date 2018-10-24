@@ -19,6 +19,10 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-image: url(../images/start.jpg);
+  background-repeat: no-repeat;
+  background-size: 1000px auto;
+  height:800px;
 }
 h1 {
   display: flex;

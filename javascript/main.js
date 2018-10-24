@@ -1,5 +1,4 @@
-//ToDo: Medium and Hard is not working, load new image when correct
-
+//ToDo: load new image when correct
 
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
@@ -11,8 +10,6 @@ var ctx2 = canvas2.getContext('2d')
 var width2 = canvas2.width
 var height2 = canvas2.height
 var bubbles = []
-
-var bg = new Background(ctx, "./images/blue.png")
 
 var letterArray = []
 var seenLettercounter = 0
@@ -98,9 +95,9 @@ canvas2.addEventListener("mousedown", (e) => {
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
-  // var reloadImage = easyButton.onclick()
+  //var reloadImage = easyButton.onclick()
   // console.log("EasyButton clicked")
-
+  var bg = new Background(ctx, "./images/blue.png")
   $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
@@ -135,13 +132,14 @@ easyButton.onclick = function () {
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
   console.log("MediumButton clicked")
+  var bg = new Background(ctx, "./images/sky.png")
 
   $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
   $("#submitBut").show()
 
-  var canv2 = new LetterCanvas(ctx2, possibleWords2)
+  canv2 = new LetterCanvas(ctx2, possibleWords2)
   canv2.img.onload = function () {
     canv2.draw()
   }
@@ -170,13 +168,13 @@ mediumButton.onclick = function () {
 var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
   console.log("HardButton clicked")
-
+  var bg = new Background(ctx, "./images/space.png")
   $(".container").hide()
   $("#canvas2").show()
   $("#canvas").show()
   $("#submitBut").show()
 
-  var canv2 = new LetterCanvas(ctx2, possibleWords3)
+  canv2 = new LetterCanvas(ctx2, possibleWords3)
   canv2.img.onload = function () {
     canv2.draw()
   }
