@@ -83,10 +83,7 @@ canvas2.addEventListener("mousedown", (e) => {
       seenLettercounter--
       //Remove letter from array
       bubbles.push(new Bubble(ctx, 1, letter.letter))
-
-      console.log("BEFORE!", letterArray)
       letterArray.splice(index, 1, "")
-      console.log("AFTER", letterArray)
       return
     }
 
@@ -97,8 +94,6 @@ var reloadImage
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
-  // reloadImage = easyButton.onclick
-  // console.log("EasyButton clicked")
   createCanvas2("./images/blue.png", 1, possibleWords1);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -109,7 +104,6 @@ easyButton.onclick = function () {
 
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
-  // reloadImage = mediumButton.onclick
   createCanvas2("./images/sky.png", 2, possibleWords2);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -172,13 +166,14 @@ function checkIfWordCorrect() {
   var joinedLetters = allLetters.join("")
 
   if (joinedLetters == canv2.word) {
-    // Reset all parameters to empty/0
     bubbles = []
     letterArray = []
     ctx.clearRect(0, 0, width, height)
     canv2.ctx2.clearRect(0, 0, 470, 400)
+
     if (canv2.typedCorrectWord()) {
       if (seenLettercounter < 5) {
+        possibleWords1.splice(canv2.ran, 0)
         createCanvas2("./images/blue.png", 1, possibleWords1);
       }
       else if (4 < seenLettercounter < 7) {
@@ -191,12 +186,15 @@ function checkIfWordCorrect() {
       showCanvas();
     }
     else {
+
+      possibleWords1.splice(canv2.ran, 0)
       $("#canvas2").hide()
       $("#canvas").hide()
       $("#submitBut").hide()
       $("#textAbout").hide()
       $(".container").show()
     }
+
     seenLettercounter = 0
   }
   else { canv2.typedWrongWord() }

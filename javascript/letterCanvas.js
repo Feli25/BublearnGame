@@ -3,10 +3,10 @@ var scoreCounter = 0
 class LetterCanvas {
   constructor(ctx2, arr) {
     this.ctx2 = ctx2;
-    var ran = Math.floor(Math.random() * (arr.length - 1))
-    this.word = arr[ran].name
+    this.ran = Math.floor(Math.random() * (arr.length - 1))
+    this.word = arr[this.ran].name
     this.img = new Image();
-    this.img.src = arr[ran].image;
+    this.img.src = arr[this.ran].image;
     this.arr = arr
     // this.width = this.ctx2.canvas2.width
     // this.height = this.ctx2.canvas2.height
@@ -23,8 +23,6 @@ class LetterCanvas {
       this.ctx2.stroke();
       x += 50
     }
-    console.log(this.word)
-    console.log(this.img)
     this.ctx2.drawImage(this.img, 100, 70, 150 * this.img.width / this.img.height, 150)
   }
 
@@ -43,7 +41,6 @@ class LetterCanvas {
       return false
     }
     else {
-      alert("Loading new word")
       return true
     }
   }
