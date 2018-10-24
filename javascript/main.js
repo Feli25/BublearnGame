@@ -104,7 +104,7 @@ easyButton.onclick = function () {
 
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
-  createCanvas2("./images/sky.png", 2, possibleWords2);
+  createCanvas2("./images/sky.png", 1.5, possibleWords2);
   showCanvas();
   gameInterval = setInterval(function () {
     update()
@@ -114,7 +114,7 @@ mediumButton.onclick = function () {
 
 var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
-  createCanvas2("./images/space.png", 3, possibleWords3);
+  createCanvas2("./images/space.png", 2, possibleWords3);
   showCanvas();
   gameInterval = setInterval(function () {
     update()
@@ -177,10 +177,10 @@ function checkIfWordCorrect() {
         createCanvas2("./images/blue.png", 1, possibleWords1);
       }
       else if (4 < seenLettercounter < 7) {
-        createCanvas2("./images/sky.png", 2, possibleWords2)
+        createCanvas2("./images/sky.png", 1.5, possibleWords2)
       }
       else if (seenLettercounter > 6) {
-        createCanvas2("./images/space.png", 3, possibleWords3);
+        createCanvas2("./images/space.png", 2, possibleWords3);
       }
 
       showCanvas();
@@ -213,10 +213,4 @@ aboutBut.onclick = function () {
   $("#canvas").hide()
   $("#submitBut").hide()
   $("#textAbout").show()
-}
-
-
-function isIntersect(point, circle) {
-  console.log(Math.sqrt((point.x - circle.x) ** 2 + (point.y - circle.y) ** 2), circle.radius)
-  return Math.sqrt((point.x - circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
 }
