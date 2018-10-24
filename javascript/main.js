@@ -16,8 +16,9 @@ var seenLettercounter = 0
 var canv2
 var gameInterval
 var myBubbleSound;
-var myGameSound = new sound("game.mp3");
-myGameSound.play()
+var myGameSound = new Audio("./game.mp3");
+myGameSound.loop = true;
+myGameSound.play();
 
 $("#canvas2").hide()
 $("#canvas").hide()
@@ -99,7 +100,7 @@ var reloadImage
 
 var easyButton = document.getElementById("easy")
 easyButton.onclick = function () {
-  myBubbleSound = new sound("./bubble.mp3")
+  myBubbleSound = new Audio("./bubble.mp3")
   createCanvas2("./images/blue.png", 1, possibleWords1);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -110,7 +111,7 @@ easyButton.onclick = function () {
 
 var mediumButton = document.getElementById("medium")
 mediumButton.onclick = function () {
-  myBubbleSound = new sound("./bubble.mp3")
+  myBubbleSound = new Audio("./bubble.mp3")
   createCanvas2("./images/sky.png", 1.5, possibleWords2);
   showCanvas();
   gameInterval = setInterval(function () {
@@ -121,7 +122,7 @@ mediumButton.onclick = function () {
 
 var hardButton = document.getElementById("hard")
 hardButton.onclick = function () {
-  myBubbleSound = new sound("./bubble.mp3")
+  myBubbleSound = new Audio("./bubble.mp3")
   createCanvas2("./images/space.png", 2, possibleWords3);
   showCanvas();
   gameInterval = setInterval(function () {
