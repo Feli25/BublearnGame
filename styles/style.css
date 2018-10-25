@@ -44,7 +44,7 @@ h1 {
 
 .canv {
   display: flex;
-  /* flex-direction: column; */
+
   justify-content: center;
   /* width: auto; */
 }
@@ -100,6 +100,7 @@ h1 {
   line-height: 25px;
   text-align: center;
   font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 25px;
 }
 #won {
   display: flex;
@@ -136,4 +137,96 @@ nav {
 }
 .test {
   font-size: 25px;
+}
+@media (max-width:500px) and (min-width: 351px){
+  .instructions {
+    align-self: center;
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 400px;
+    padding: 10px 0px 0px 0px;
+    margin: 50px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    line-height: 30px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
+  }
+  #textAbout {
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 400px;
+    padding: 10px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    margin: 50px 0px 0px 0px;
+    line-height: 25px;
+    text-align: center;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
+  }
+  .canv {
+    flex-direction: column;
+  }
+  #submitBut {
+    height: 100px;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #canvas {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media (max-width:350px) {
+  .instructions {
+    align-self: center;
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 300px;
+    padding: 10px 0px 0px 0px;
+    margin: 50px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    line-height: 30px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
+  }
+  #textAbout {
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 300px;
+    padding: 10px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    margin: 50px 0px 0px 0px;
+    line-height: 25px;
+    text-align: center;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
+  }
+  .canv {
+    flex-direction: column;
+  }
+  #submitBut {
+    height: 100px;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #canvas {
+    width: 300px;
+    height: 300px;
+  }
+  #canvas2 {
+    width: 300px;
+    height: 300px;
+  }
 }
