@@ -35,7 +35,7 @@ class Bubble {
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
     this.ctx.stroke();
     this.ctx.fill();
-    this.ctx.font = "20px 'Trebuchet MS'"
+    this.ctx.font = "25px 'Annie Use Your Telescope', cursive"
     this.ctx.fillStyle = this.textcolor
     this.ctx.textAlign = "center"
     this.ctx.fillText(this.letter, this.x, this.y)

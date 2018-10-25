@@ -11,7 +11,7 @@ class Letter {
   draw() {
     this.x = this.letterXdist + (this.index * 50)
     this.y = 340
-    this.ctx.font = "40px 'Trebuchet MS'"
+    this.ctx.font = "35px 'Annie Use Your Telescope', cursive"
     this.ctx.fillText(this.letter, this.x, this.y)
   }
 }
