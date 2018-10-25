@@ -63,7 +63,7 @@ var possibleWords2 = [
   { name: "PHONE", image: "./images/level2/phone.png" },
   { name: "PAPER", image: "./images/level2/paper.png" },
   { name: "PLANE", image: "./images/level2/plane.png" },
-  { name: "POINT", image: "./images/level2/point.png" },
+  { name: "BLACK", image: "./images/level2/black.png" },
   { name: "RIVER", image: "./images/level2/river.png" },
   { name: "CROWN", image: "./images/level2/crown.png" },
   { name: "CHURCH", image: "./images/level2/church.png" }]
