@@ -10,7 +10,7 @@ class Bubble {
     var ranx = Math.floor(ran1 * (this.ctx.canvas.width - this.radius * 3) + this.radius * 2)
     var rany = Math.floor(ran2 * (this.ctx.canvas.height - this.radius * 3) + this.radius * 2)
     var ranxspeed = ran2 * 0.5
-    var ranyspeed = (ran2 / 2 * speed) + 0.1
+    var ranyspeed = (ran2 / 2 * speed) + 0.2
     this.letter = letter || alphabet[ranletter]
     this.x = ranx
     this.y = rany
