@@ -25,6 +25,21 @@ $("#canvas").hide()
 $("#submitBut").hide()
 $("#textAbout").hide()
 $("#won").hide()
+$("#SoundOn").hide()
+
+var soundButtonOn = document.getElementById("SoundOff")
+var soundButtonOff = document.getElementById("SoundOn")
+soundButtonOn.onclick = function () {
+  $("#SoundOff").hide()
+  $("#SoundOn").show()
+  myGameSound.pause()
+}
+soundButtonOff.onclick = function () {
+  $("#SoundOff").show()
+  $("#SoundOn").hide()
+  myGameSound.play()
+}
+
 
 // Clicking on the bubbles, right side
 canvas.addEventListener('mousedown', (e) => {
