@@ -60,9 +60,6 @@ h1 {
   font-family: 'Annie Use Your Telescope', cursive;
   font-size: 25px;
 }
-/* .boxRight {
-  border: 1px solid blue;
-} */
 .instructions {
   align-self: center;
   border: 1px solid blue;
@@ -175,6 +172,9 @@ nav {
     width: 400px;
     height: 400px;
   }
+  .imgChange{
+    content:url("../images/win2.JPG");
+  }
 }
 @media (max-width:350px) {
   .instructions {
@@ -222,5 +222,8 @@ nav {
   #canvas2 {
     width: 300px;
     height: 300px;
+  }
+  .imgChange{
+    content:url("../images/win2.JPG");
   }
 }

@@ -167,12 +167,10 @@ function createCanvas2(backgroundUrl, speed, array) {
   var splitword = canv2.word.split("");
   for (var i = 0; i < splitword.length; i++) {
     bubbles.push(new Bubble(ctx, speed, splitword[i]));
-    console.log(splitword[i])
   }
   var splitreverse = splitword.reverse();
   for (var i = 0; i < splitreverse.length; i++) {
     bubbles.push(new Bubble(ctx, speed, splitreverse[i]));
-    console.log(splitreverse[i])
   }
 }
 
