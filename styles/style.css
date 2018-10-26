@@ -136,7 +136,7 @@ nav {
     background-image: url(../images/start.jpg);
     background-repeat: no-repeat;
     height: 600px;
-    width: 400px;
+    width: 300px;
     padding: 10px 0px 0px 0px;
     margin: 50px 0px 0px 0px;
     background-position: right 0px top 200px;
@@ -149,7 +149,7 @@ nav {
     background-image: url(../images/start.jpg);
     background-repeat: no-repeat;
     height: 600px;
-    width: 400px;
+    width: 300px;
     padding: 10px 0px 0px 0px;
     background-position: right 0px top 200px;
     margin: 50px 0px 0px 0px;
@@ -182,11 +182,11 @@ nav {
     border: 1px solid blue;
     background-image: url(../images/start.jpg);
     background-repeat: no-repeat;
-    height: 600px;
-    width: 300px;
+    height: 800px;
+    width: 200px;
     padding: 10px 0px 0px 0px;
     margin: 50px 0px 0px 0px;
-    background-position: right 0px top 200px;
+    background-position: right 0px top 400px;
     line-height: 30px;
     font-family: 'Annie Use Your Telescope', cursive;
     font-size: 25px;
@@ -196,7 +196,7 @@ nav {
     background-image: url(../images/start.jpg);
     background-repeat: no-repeat;
     height: 600px;
-    width: 300px;
+    width: 200px;
     padding: 10px 0px 0px 0px;
     background-position: right 0px top 200px;
     margin: 50px 0px 0px 0px;
@@ -225,5 +225,35 @@ nav {
   }
   .imgChange{
     content:url("../images/win2.JPG");
+  }
+}
+@media (max-width:650px) and (min-width: 501px) {
+  .instructions {
+    align-self: center;
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 400px;
+    padding: 10px 0px 0px 0px;
+    margin: 50px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    line-height: 30px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
+  }
+  #textAbout {
+    border: 1px solid blue;
+    background-image: url(../images/start.jpg);
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 400px;
+    padding: 10px 0px 0px 0px;
+    background-position: right 0px top 200px;
+    margin: 50px 0px 0px 0px;
+    line-height: 25px;
+    text-align: center;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px;
   }
 }
