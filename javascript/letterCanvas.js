@@ -39,7 +39,7 @@ class LetterCanvas {
 
   typedCorrectWord() {
     scoreCounter++
-    if (scoreCounter == 5) {//change!!
+    if (scoreCounter == 2) {//change!!
       scoreCounter = 0;
       return false
     }
