@@ -44,14 +44,8 @@ h1 {
 
 .canv {
   display: flex;
-
-  justify-content: center;
-  /* width: auto; */
+  justify-content: space-around;
 }
-
-/* #canvas2 {
-  border: 1px solid green;
-} */
 
 #submitBut {
   height: 200px;
